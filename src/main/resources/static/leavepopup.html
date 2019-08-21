@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<!--Jquery datatable CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/jquerydatatable.css">
+		<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css" />
+<style>
+.block input{
+  border:none;
+  outline: none;
+  background: #4e8fbb3d;
+  padding:10px;
+  margin: 5px;
+}
+.block input:focus{
+  background-color: #ddd;
+}
+.cancelbtn {
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background-color:#a90a0a;
+    color: aliceblue;
+    padding: 10px;
+    width:100px;
+}
+.loginbtn{
+    text-align: center;
+    border-radius: 10px;   
+    font-size: 15px;
+    background-color:#0088cc;
+    padding:10px;
+    width:100px;
+    border: none;
+    outline: none;
+    display: block;
+    color: white;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+.loginbtn:hover{
+  opacity: 0.8;
+}
+
+.container {
+  padding:10px 10px;
+}
+.modal {
+  display: flex; 
+  left: 0;
+  top: 0;
+  /*width: 100%;   
+  height: 100%; */
+
+}
+.close-popup {
+   float:right;
+   font-size: 42px;
+   cursor: pointer;
+   color:#c42228;
+}
+.title{
+  text-align: center;
+  padding-bottom: 30px;
+}
+.modal-content {
+
+  margin: 25px 15px;
+  box-sizing: border-box;
+  background:#f1f2f3;
+  border-radius: 10px;
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+.block label{
+  display: inline-block;
+  text-align:left;
+  font-size: 18px;
+}â€‹
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+/*datatable css*/
+.editor_create {
+    color: #ffffff;
+    background: #c42228;
+    margin:10px 0px 10px 0px;
+}
+.editor_create:hover{
+    color: #ffffff;
+}
+#example1_filter label{
+  display: inline-flex;
+  text-align: left;
+  width: 100%;
+}
+#example1_filter input{
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.button{
+display:flex;
+}
+.modal-content {
+    position: absolute;
+    }
+    .modal-content .block {
+    	    display: flex;
+    margin: 5px 15px;
+    }
+</style>
+</head>
+<body>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div id="edit_popup_default" class="modal">
+							<div class="col-md-4 col-sm-4 col-lg-4">
+							<form class="modal-content animate">
+								    <div class="block" >
+		           						<label class="col-md-6 col-sm-6 col-lg-6 name">id:</label>
+		        						<input class="col-md-6 col-sm-6 col-lg-6" type="text" id="id" name="id" readonly>
+		                			</div> 
+						            <div class="block" >
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Employee id:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="employeeid" name="employee-id">
+						            </div>
+						            <div class="block">						         
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">First Name:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="firstname" name="firstname">
+						            </div>
+						             <div class="block">						                 
+						            	<label class="col-md-6 col-sm-6 col-lg-6 name">Last Name:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="lastname" name="lastname">
+						            </div>
+						            <div class="block">
+						               	<label class="col-md-6 col-sm-6 col-lg-6 name">Mail Id:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="mail" name="mail">
+						            </div>
+                                             <div class="block">
+						               	<label class="col-md-6 col-sm-6 col-lg-6 name">Subject:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="subject" name="subject">
+						            </div>
+                                         <div class="block">
+						               	<label class="col-md-6 col-sm-6 col-lg-6 name">Content:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="content" name="content">
+						            </div>									
+						            <div class="block">
+						               	<label class="col-md-6 col-sm-6 col-lg-6 name">From Date:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="fromdate" name="fromdate">
+						            </div>	
+						             <div class="block">
+						               	<label class="col-md-6 col-sm-6 col-lg-6 name">To Date:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="todate" name="todate">
+						            </div>				                    					            						           
+						            <div class="block">
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Total Days:</label>
+						                 <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="totaldays" name="totaldays">
+						            </div>
+						            <div class="block">						                   
+						                 <label class="col-md-6 col-sm-6 col-lg-6 name">Leave Type:</label>
+						                  <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="leavetype" name="leavetype">
+						            </div>
+						            <div class="block">						                    
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Allotted From Date:</label>
+						                 <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="allottedfromdate" name="allottedfromdate">
+						            </div>
+						            <div class="block">						                    
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Allotted To Date:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="allottedtodate" name="allottedtodate">
+						            </div>
+						            <div class="block">						                   
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Total days Allotted:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="allotteddays" name="allotteddays">
+						            </div>						            
+						            <div class="block">						                   
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Description:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="description" name="description">
+						            </div>
+						            <div class="block">						                     	 
+						            	<label class="col-md-6 col-sm-6 col-lg-6 name">Applied Date:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="applieddate" name="applieddate">
+						            </div>
+						  	</form>
+							</div>
+							<div class="col-md-4 col-sm-4 col-lg-4">
+							<form class="modal-content animate">						  
+						      <div class="container">
+						       
+						       
+								  <div class="block">						                   
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">No of CL Available:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="availablecl" name="availablecl">
+						         
+						             </div>
+						            
+						            <div class="block">						                     	 
+						            	<label class="col-md-6 col-sm-6 col-lg-6 name">No of EL Available:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="availableel" name="availableel">
+						            </div>
+						       
+						            
+								     <div class="block">						                     	 
+						            	<label class="col-md-6 col-sm-6 col-lg-6 name">No of SL Available:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="availablesl" name="availablesl">
+						            
+						            </div>
+						      
+									 <div class="block">						                     	 
+						            	<label class="col-md-6 col-sm-6 col-lg-6 name">No of Leaves Tacken:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="leave" name="leave">
+						            
+						            </div>
+						          
+						      	</div>
+						  	</form>
+							</div>
+							<div class="col-md-4 col-sm-4 col-lg-4">
+							<form class="modal-content animate">						  
+						      <div class="container">
+						        <i class="close-popup popup-close-edit" data-id="popup_default">&times;</i> 
+								    
+						            <div class="block">						                    
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Allotted From Date:</label>
+						                 <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="allottedfromdate" name="allottedfromdate">
+						            </div>
+						            <div class="block">						                    
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Allotted To Date:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="allottedtodate" name="allottedtodate">
+						            </div>
+						            <div class="block">						                   
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Total days Allotted:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="allotteddays" name="allotteddays">
+						            </div>						            
+						            <div class="block">						                   
+						                <label class="col-md-6 col-sm-6 col-lg-6 name">Description:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="description" name="description">
+						            </div>
+						            <div class=" block">						                     	 
+						            	<label class="col-md-6 col-sm-6 col-lg-6 name">Applied Date:</label>
+						                <input class="col-md-6 col-sm-6 col-lg-6" type="text" id="applieddate" name="applieddate">
+						            </div>
+						          
+						            <div class="button"> 
+						      			<button class="buttonsave loginbtn" id="approve"  value="Approve">Approve</button>
+						      			<button class="buttonsave loginbtn" id="reject"  value="Reject">Reject</button>
+						      		</div>
+						      	</div>
+						  	</form>
+							</div>
+							
+						 </div>
+</div>
+
+							<!-- <div id="edit_popup_default" class="modal">
+							<form class="modal-content animate">						  
+						      <div class="container">
+						        <i class="close-popup popup-close-edit" data-id="popup_default">&times;</i> 
+								    <div class="block" >
+		           						<label>id:</label>
+		        						<input type="text" id="id" name="id" readonly>
+		                			</div>  
+						            <div class="block" >
+						                <label class="name">Employee id:</label>
+						                <input type="text" id="employeeid" name="employee-id">
+						            </div>
+						            <div class="block">						         
+						                <label class="name">First Name:</label>
+						                <input type="text" id="firstname" name="firstname">
+						            </div>
+						             <div class="block">						                 
+						            	<label class="name">Last Name:</label>
+						                <input type="text" id="lastname" name="lastname">
+						            </div>
+						            <div class="block">
+						               	<label class="name">Mail Id:</label>
+						                <input type="text" id="mail" name="mail">
+						            </div>	
+						            <div class="block">
+						               	<label class="name">From Date:</label>
+						                <input type="text" id="fromdate" name="fromdate">
+						            </div>	
+						             <div class="block">
+						               	<label class="name">To Date:</label>
+						                <input type="text" id="todate" name="todate">
+						            </div>				                    					            						           
+						            <div class="block">
+						                <label class="name">Total Days:</label>
+						                 <input type="text" id="totaldays" name="totaldays">
+						            </div>
+						            <div class="block">						                   
+						                 <label class="name">Leave Type:</label>
+						                  <input type="text" id="leavetype" name="leavetype">
+						            </div>
+						            <div class="block">						                    
+						                <label class="name">Allotted From Date:</label>
+						                 <input type="text" id="allottedfromdate" name="allottedfromdate">
+						            </div>
+						            <div class="block">						                    
+						                <label class="name">Allotted To Date:</label>
+						                <input type="text" id="allottedtodate" name="allottedtodate">
+						            </div>
+						            <div class="block">						                   
+						                <label class="name">Total days Allotted:</label>
+						                <input type="text" id="allotteddays" name="allotteddays">
+						            </div>						            
+						            <div class="block">						                   
+						                <label class="name">Description:</label>
+						                <input type="text" id="description" name="description">
+						            </div>
+						            <div class="block">						                     	 
+						            	<label class="name">Applied Date:</label>
+						                <input type="text" id="applieddate" name="applieddate">
+						            </div>
+						            <div class="block">						                     	 
+						            	<label class="name">Password:</label>
+						                <input type="text" id="password" name="password">
+						            </div>
+						            <div class="button"> 
+						      			<button class="buttonsave loginbtn" id="approve"  value="Approve">Approve</button>
+						      			<button class="buttonsave loginbtn" id="approve"  value="Approve">Decline</button>
+						      		</div>
+						      	</div>
+						  	</form>
+						 </div> -->
+
+
+		<script src="assets/javascripts/jquerydatatable/jquery-1.11.3.min.js"></script>
+		
+
+			<script src="assets/javascripts/jquerydatatable/popup.js"></script>
+		<!--jquery table JS-->               
+
+		<script type="text/javascript" src="js/leavepopup.js"></script>
+        <script type="text/javascript" src="js/leaveapprove.js"></script>
+<script>
+ $(".popup-close-edit").click(function(){
+	 window.location.replace("/pages-leavemanagement");
+	});
+</script>
+
+		
+
+</body>
+</html>

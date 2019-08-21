@@ -1,0 +1,29 @@
+.list-of-employee{
+	list-style: none;
+	
+}
+.user-block{
+	background: #cccccc;  
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.user-block:hover{
+	background-color: #0464ac;
+	color: #ffffff;
+}
+.employee-list{
+	overflow: auto;
+
+}
+.selectbox {
+    background: #fff;
+    color: #1d3b4a;
+    padding: 8px;
+    line-height: 18px;
+    border-radius: 4px;
+    border-width: 0 1px 4px;
+    border: 1px solid #ddd;
+	cursor: pointer;
+    margin-bottom: 25px;
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--Jquery datatable CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/jquerydatatable.css">
+<style>
+.block input{
+  width: 300px;
+  border:none;
+  outline: none;
+  background: #4e8fbb3d;
+  padding:10px;
+  margin: 5px 0 5px 50px;
+}
+.block input:focus{
+  background-color: #ddd;
+}
+.cancelbtn {
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background-color:#a90a0a;
+    color: aliceblue;
+    padding: 10px;
+    width:100px;
+}
+.loginbtn{
+    text-align: center;
+    border-radius: 10px;   
+    font-size: 15px;
+    background-color:#0088cc;
+    padding:10px;
+    width:100px;
+    border: none;
+    outline: none;
+    display: block;
+    color: white;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+.loginbtn:hover{
+  opacity: 0.8;
+}
+
+.container {
+  padding:10px 10px;
+}
+.modal {
+  /* display: none;  */
+  left: 0;
+  top: 0;
+  width: 100%;   
+  height: 100%; 
+
+}
+.close-popup {
+   display: inline-block;
+   position: relative;
+   top: -5px;
+   right: -650px;
+   font-size: 42px;
+   cursor: pointer;
+   color:#c42228;
+}
+.title{
+  text-align: center;
+  padding-bottom: 30px;
+}
+.modal-content {
+
+  margin: 5% auto 15% auto;
+  width: 700px;
+  box-sizing: border-box;
+  background:#f1f2f3;
+  border-radius: 10px;
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+.block label{
+  display: inline-block;
+  width: 140px;
+  text-align:left;
+  margin-left: 25px;
+  font-size: 18px;
+}â€‹
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+/*datatable css*/
+.editor_create {
+    color: #ffffff;
+    background: #c42228;
+    margin:10px 0px 10px 0px;
+}
+.editor_create:hover{
+    color: #ffffff;
+}
+#example1_filter label{
+  display: inline-flex;
+  text-align: left;
+  width: 100%;
+}
+#example1_filter input{
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+</style>
+</head>
+<body>
+							<div id="edit_popup_default" class="modal">
+							<form class="modal-content animate">						  
+						      <div class="container">
+						        <i class="close-popup popup-close-edit" data-id="popup_default">&times;</i> 
+								    <div class="block" >
+		           						<label>id:</label>
+		        						<input type="text" id="id" name="id" readonly>
+		                			</div>  
+						            <div class="block" >
+						                <label class="name">Employee id:</label>
+						                <input type="text" id="empid" name="employee-id">
+						            </div>
+						            <div class="block">						         
+						                <label class="name">First Name:</label>
+						                <input type="text" id="firstname" name="firstname">
+						            </div>
+						             <div class="block">						                 
+						            	<label class="name">Last Name:</label>
+						                <input type="text" id="lastname" name="lastname">
+						            </div>
+						            <div class="block">
+						               	<label class="name">Date of Joining:</label>
+						                <input type="text" id="date" name="dateofjoining">
+						            </div>						                    					            						           
+						            <div class="block">
+						                <label class="name">Designation:</label>
+						                 <input type="text" id="designation" name="designation">
+						            </div>
+						            <div class="block">						                   
+						                 <label class="name">Mobile:</label>
+						                  <input type="text" id="mobile" name="mobile">
+						            </div>
+						            <div class="block">						                    
+						                <label class="name">Personal Mail:</label>
+						                 <input type="text" id="personalmail" name="personalmail">
+						            </div>
+						            <div class="block">						                    
+						                <label class="name">Company Mail:</label>
+						                <input type="text" id="companymail" name="companymail">
+						            </div>
+						            <div class="block">						                   
+						                <label class="name">Date of Birth:</label>
+						                <input type="text" id="dob" name="dateofbirth">
+						            </div>						            
+						            <div class="block">						                   
+						                <label class="name">Address:</label>
+						                <input type="text" id="address" name="address">
+						            </div>
+						            <div class="block">						                     	 
+						            	<label class="name">Status:</label>
+						                <input type="text" id="status" name="status">
+						            </div>
+						            <!-- <div class="block">						                     	 
+						            	<label class="name">Password:</label>
+						                <input type="text" id="password" name="password">
+						            </div> -->
+						            <div class="button"> 
+						      			<button class="buttonsave loginbtn" id="submit">Save</button>
+						      		</div>
+						      	</div>
+						  	</form>
+						 </div>
+
+
+		<script src="assets/javascripts/jquerydatatable/jquery-1.11.3.min.js"></script>
+		
+		<!-- Jquery Datatable.min.js-->
+		<script src="assets/javascripts/jquerydatatable/jquery.dataTables.min.js"></script>
+		
+		<!--jquery table JS-->               
+		<script src="assets/javascripts/jquerydatatable/jquerytable.js"></script>
+		
+		<!--Save data JS-->               
+		<script src="js/editpopup.js"></script>
+
+		<!--Popup JS-->               
+		<!-- 	<script src="assets/javascripts/jquerydatatable/popup.js"></script> -->
+
+		<!--add data  JS-->               
+		<!-- <script src="assets/javascripts/jquerydatatable/add.js"></script> -->
+
+		<!--Save data JS-->               
+		<script src="js/save.js"></script>
+<script>
+ $(".popup-close-edit").click(function(){
+	 window.location.replace("/pages-master-setting");
+	});
+</script>
+
+		
+
+</body>
+</html>
